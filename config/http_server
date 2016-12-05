@@ -1,0 +1,60 @@
+###
+###   KPServer:HTTP_Server_config
+###
+
+# Server initial information:
+server.init.ip 192.168.0.104
+server.init.port 80
+server.init.listen 10
+
+# Server set timeout:
+server.socket_timeout disable
+server.socket_timeout.value 3
+
+# Enable deny mode for request:
+server.access.deny_status enable
+server.access.deny /config;/libs;/run
+
+# Force change root directory:
+server.access.force_using_root enable
+# You should enable this line, because requests can not reach /www (your project in here).
+
+# Only check "deny"
+server.access.allow /www;/
+
+# Console log controler:
+server.show.request_info disable
+server.show.http_header disable
+server.error.beep enable
+server.show.verbose enable
+
+# Additional header string:
+server.header_addition disable
+server.header_addition.value \nCache-Control: no-cache
+
+# Enable alias request:
+web.alias enable
+
+# Specify root directory:
+# Using with server.access.force_using_root
+web.root /www
+
+# Define the path for error pages:
+web.error.403 /error/403.html
+web.error.404 /error/404.html
+web.error.408 /error/408.html
+web.error.500 /error/500.html
+
+# Jobs working verbose:
+jobs.make_list.verbose disable
+
+# Jobs hidden file on list:
+# Using absolute path for this and separate by a comma.
+jobs.make_list.hidden /www/img;/www/images;/www/css;/www/data;/www/fonts;/www/backup;/www/favicon.ico;/www/layout/vppr/images;/www/layout/vppr/js;/www/layout/vppr/fonts;/www/layout/vppr/css;/www/layout/ddt/images/;/www/layout/ddt/fonts;/www/layout/ddt/js;/www/layout/ddt/css
+
+# Seach all file valid to index.htm, index.html, index.py, index.php, ...
+# CGI is not supported now :)
+jobs.show_site.file_name index.htm;index.html
+
+# Jobs separate when maximum column:
+jobs.make_list.max_col 30
